@@ -1,0 +1,18 @@
+[{
+    "id": 1,
+    "title": "BẢO HÀNH CHÍNH HÃNG 2 NĂM",
+    "detail": "Sản phẩm được bảo hành chính hãng lên đến 2 năm, cho tất cả các sản phẩm của ABASO. Khách hàng được hỗ trợ giải đáp mọi thắc mắc.",
+    "src": "Repair.png"
+}
+,{
+    "id": 2,
+    "title": "THANH TOÁN SAU KHI NHẬN HÀNG",
+    "detail": "ABASO có đơn vị vận chuyển khắp toàn quốc, với chi phí cực rẻ. Khách hàng được quyền xem hàng, kiểm tra hàng rồi mới phải thanh toán tiền.",
+    "src": "Payment.png"
+},{
+    "id": 3,
+    "title": "1 ĐỔI 1 TRONG 30 NGÀY",
+    "detail": "Trong suốt 30 ngày đầu tiên sử dụng sản phẩm, khách hàng được phép đổi trả hoàn toàn miễn phí nếu xuất hiện lỗi từ nhà sản phẩm.",
+    "src": "Return.png"
+}
+]

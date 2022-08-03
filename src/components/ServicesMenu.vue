@@ -3,7 +3,7 @@
     <ul>
       <li>
         <div class="sv-image">
-          <img src="@/assets/ABS-SSM01.jpg" alt="" />
+          <img src="@/assets/img/ABS-SSM01.jpg" alt="" />
         </div>
         <div class="sv-label">
           <p class="label-text-1">Hướng dẫn sử dụng</p>
@@ -13,7 +13,7 @@
       </li>
       <li>
         <div class="sv-image">
-          <img src="@/assets/ABS-SSM02.jpg" alt="" />
+          <img src="@/assets/img/ABS-SSM02.jpg" alt="" />
         </div>
         <div class="sv-label">
           <p class="label-text-1">Hướng dẫn sử dụng</p>
@@ -24,7 +24,7 @@
       <li>
         <router-link class="label-link" :to="{ name: 'Services' }">
           <div class="sv-image">
-            <img src="@/assets/tool-text2stl.png" alt="" />
+            <img src="@/assets/img/tool-text2stl.png" alt="" />
           </div>
           <div class="sv-label">
             <p class="label-text-1">Trãi nghiệm</p>
@@ -77,6 +77,7 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
+      border-radius: 10px;
 
       .sv-image {
         display: flex;
@@ -84,6 +85,7 @@ export default {
 
         img {
           height: 200px;
+          border-radius: 10px;
         }
       }
 
@@ -140,6 +142,11 @@ export default {
         -webkit-transform: translateY(0);
         transform: translateY(0);
       }
+    }
+
+    li:hover {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
   }
 }

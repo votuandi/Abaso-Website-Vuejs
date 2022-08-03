@@ -5,5 +5,19 @@
         "auth": "Hà Minh Trí",
         "pos": "CEO",
         "src": "avt-haminhtri.png"
+    },
+    {
+        "id": 2,
+        "quote": "Bạn có một mẫu mới ra, bạn chia sẻ mẫu đó có menu gì? Tính năng so với mẫu cũ ra sao? Công thức update như thế nào? Bạn chia sẻ phần bạn biết thì thứ bạn nhận lại là được chia sẻ phần bạn chưa rõ. Và khách hàng nhìn ra bạn là người hiểu rõ về sản phẩm sẽ tin rằng lựa chọn theo bạn là đúng đắn, sẽ tin và kinh nghiệm của bạn khi sử dụng máy, khi dùng được lẫn khi bị lỗi xử lý ra sao. Từ đó, không lo bị sale khác lấy mất khách...",
+        "auth": "Edward John",
+        "pos": "Adviser",
+        "src": "avt-edward.png"
+    },
+    {
+        "id": 3,
+        "quote": "Thật ra, cần biết nó làm được những việc gì để có thể dùng hết được hết tính năng của máy thì mới thật sự là hữu ích. Dùng đc nhiều, làm được nhiều thì mới thấy đồng tièn mình bỏ ra cưới máy về nó xứng đáng. Càng dùng nhiều càng yêu, ứng dụng được nhiều mới có động lực kiếm tiền lên đời máy ạ.",
+        "auth": "John Doe",
+        "pos": "partner",
+        "src": "avt-john.png"
     }
 ]

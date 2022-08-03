@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     getSrc() {
-      return require(`@/assets/${this.cardData.src}`);
+      return require(`@/assets/img/${this.cardData.src}`);
     },
   },
 };

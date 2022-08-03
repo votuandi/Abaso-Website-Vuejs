@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     getSrc() {
-      return require(`@/assets/${this.quoteData.src}`);
+      return require(`@/assets/img/${this.quoteData.src}`);
     },
   },
 };
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .quote {
-  width: 100vw;
+  width: 100%;
   height: 400px;
   display: flex;
   flex-direction: row;
@@ -47,13 +47,14 @@ export default {
   }
 
   .quote-text {
-    width: 600px;
-    margin: 0 40px;
+    width: 800px;
+    margin: 0 30px;
     padding-bottom: 80px;
 
     h2 {
       font-family: "Courier New", monospace;
       padding-bottom: 10px;
+      font-size: 16px;
     }
 
     p {
@@ -65,6 +66,49 @@ export default {
 
     p.auth {
       font-size: 18px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+    .avt-auth {
+      img {
+        height: 300px;
+
+        @media (max-width: 600px) {
+          height: 150px;
+        }
+      }
+    }
+
+    .quote-text {
+      width: 80vw;
+      padding: 0 10px;
+
+      @media (max-width: 600px) {
+        h2 {
+          font-family: "Courier New", monospace;
+          padding-bottom: 5px;
+          font-size: 10px;
+        }
+
+        p {
+          text-align: center;
+          padding-left: 0;
+          font-family: Garamond, serif;
+          font-weight: bold;
+          font-size: 6px;
+        }
+
+        p.auth {
+          font-size: 8px;
+        }
+      }
     }
   }
 }

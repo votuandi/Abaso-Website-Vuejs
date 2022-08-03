@@ -3,9 +3,6 @@ import {
 } from 'vue'
 import App from './App.vue'
 import router from './router'
-import {
-    Plugin
-} from 'vue-responsive-video-background-player'
 
 import {
     library
@@ -19,6 +16,8 @@ import {
     FontAwesomeIcon
 } from "@fortawesome/vue-fontawesome";
 
+import VueSplide from '@splidejs/vue-splide';
+
 library.add(faBars);
 
 
@@ -26,4 +25,4 @@ library.add(faBars);
 
 
 
-createApp(App).use(router).use(Plugin).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+createApp(App).use(router).use(VueSplide).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

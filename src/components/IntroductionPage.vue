@@ -1,7 +1,7 @@
 <template>
   <div class="introduction-page">
     <div class="made-in-vn">
-      <img src="@/assets/MadeInVN-Logo.png" alt="" />
+      <img src="@/assets/img/MadeInVN-Logo.png" alt="" />
       <h2>SẢN XUẤT TẠI VIỆT NAM</h2>
       <p>
         Máy móc được thiết kế và chế tạo bởi kỹ sư trẻ của ABASO, thiết kế hiện
@@ -18,12 +18,11 @@
       />
     </div>
     <div class="quotes">
-      <CpnQuote
-        class="quote"
-        v-for="quote in listQuote"
-        :key="quote.id"
-        :quoteData="quote"
-      />
+      <splide :options="options">
+        <splide-slide v-for="quote in listQuote" :key="quote.id">
+          <CpnQuote class="quote" :quoteData="quote" />
+        </splide-slide>
+      </splide>
     </div>
   </div>
 </template>
@@ -33,25 +32,56 @@ import CpnCard from "./CpnCard.vue";
 import CpnQuote from "./CpnQuote.vue";
 import jsonListCards from "@/assets/json/card.json";
 import jsonListQuotes from "@/assets/json/quotes.json";
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
 export default {
   name: "IntroductionPage",
+  created() {
+    this.checkScreen();
+  },
   components: {
     CpnCard,
     CpnQuote,
+    Splide,
+    SplideSlide,
   },
   data() {
     return {
       listCard: jsonListCards,
       listQuote: jsonListQuotes,
+      options: {
+        rewind: true,
+        width: "80vw",
+        height: 300,
+        gap: "1rem",
+        loop: true,
+        autoplay: true,
+        arrows: false,
+      },
     };
+  },
+  methods: {
+    checkScreen() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth <= 1200) {
+        this.options.height = 500;
+        this.options.width = "100vw";
+        return;
+      }
+      this.options.height = 300;
+      this.options.width = "80vw";
+      return;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+@import "@splidejs/splide/dist/css/themes/splide-sea-green.min.css";
+@import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 .introduction-page {
   background-color: #ffffff;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -95,6 +125,13 @@ export default {
 
     .middle-card {
       margin-top: 30px;
+    }
+
+    @media (max-width: 1200px) {
+      flex-direction: column;
+      .middle-card {
+        margin: 30px 0;
+      }
     }
   }
 }

@@ -1,0 +1,149 @@
+[
+    {
+        "id": 0,
+        "name": "Abaso Cake Art",
+        "version": "V.01",
+        "intro": "Mua Máy Vẽ Bánh Tự Động giá tốt bảo hành chính hãng lên đến 2 năm, 1 đổi 1 trong 30 ngày tại ABASO",
+        "property_names": ["Kích thước máy", "Loại màn hình"],
+        "sub": [
+            {
+                "id": 0,
+                "code": "ABSMCAV1S",
+                "name": "STANDARD",
+                "src": "product_standard.jpg",
+                "intro": [
+                    "Tặng kèm 5 USB có sẵn 100+ Mẫu (Cập nhật liên tục)",
+                    "Gói update 2 năm",
+                    "Hỗ trợ cập nhật 100 mẫu theo yêu cầu MIỄN PHÍ",
+                    "Kích thước ảnh in tối đa 15cm"
+                ],
+                "properties": [ "Size in 15cm", "Điều khiển nút"],
+                "info": [
+                    "Khổ máy: Máy có thể chứa bánh tiêu chuẩn là 20cm (Quá khổ tối đa 25cm)",
+                    "Vùng làm việc: Máy có thể vẽ (viết) trong vùng 15cmx15cm",
+                    "Được trang bị màn hình LCD điều khiển bằng nút vặn giúp thao tác tiện lợi nhanh chóng, đơn giản hiệu quả."
+                ],
+                "price": {
+                    "origin": 15000000,
+                    "final": 13500000
+                }
+            },
+            {
+                "id": 1,
+                "code": "ABSMCA1M",
+                "name": "PROFESSIONAL",
+                "src": "product_professional.jpg",
+                "intro": [
+                    "Tặng kèm 10 USB có sẵn 200+ Mẫu",
+                    "Gói update vĩnh viễn",
+                    "Hỗ trợ cập nhật 200 mẫu theo yêu cầu MIỄN PHÍ",
+                    "Màn hình cảm ứng, kích thước in tối đa 20cm"
+                ],
+                "properties": [ "Size in 20cm", "Màn hình cảm ứng"],
+                "info": [
+                    "Khổ máy: Máy có thể chứa bánh tiêu chuẩn là 25cm (Quá khổ tối đa 30cm)",
+                    "Vùng làm việc: Máy có thể vẽ (viết) trong vùng 20cmx20cm",
+                    "Được trang bị màn hình cảm biến tiên tiến, hiện đại giúp thao tác dễ dàng tiện lợi hơn nữa."
+                ],
+                "price": {
+                    "origin": 17500000,
+                    "final": 15000000
+                }
+            },
+            {
+                "id": 2,
+                "code": "ABSMCA1L",
+                "name": "PREMIUM",
+                "src": "product_premium.jpg",
+                "intro": [
+                    "Tặng kèm 10 USB có sẵn 300+ Mẫu",
+                    "Gói update vĩnh viễn",
+                    "Hỗ trợ cập nhật 300 mẫu theo yêu cầu MIỄN PHÍ",
+                    "Điều khiển bằng điện thoại, kích thước tối đa 25cm"
+                ],
+                "properties": [ "Size in 25cm", "Điều khiển bằng điện thoại"],
+                "info": [
+                    "Khổ máy: Máy có thể chứa bánh tiêu chuẩn là 30cm (Quá khổ tối đa 40cm)",
+                    "Vùng làm việc: Máy có thể vẽ (viết) trong vùng 25cmx25cm",
+                    "Được trang bị màn hình cảm biến tiên tiến kết nối trực tiếp với điện thoại thông minh, điều khiển máy thông qua điện thoại."
+                ],
+                "price": {
+                    "origin": 20000000,
+                    "final": 18500000
+                }
+            }
+        ],
+        "detail": null,
+        "additional_information": {
+            "weight": "12kg",
+            "size": "35 × 35 × 40 cm",
+            "machine_size": "Size in 15cm, Size in 20cm, Size in 25cm",
+            "screen": "Điều khiển nút, Màn hình cảm ứng, Điều khiển bằng điện thoại"
+        },
+        "feedback": null
+    },
+    {
+        "id": 1,
+        "name": "Máy Chà Láng Bánh ABASO",
+        "version": null,
+        "intro": "Mua Máy Chà Láng Tự Động giá tốt bảo hành chính hãng lên đến 2 năm, 1 đổi 1 trong 30 ngày tại ABASO",
+        "property_names": null,
+        "sub": [
+            {
+                "id": 0,
+                "code": "ABSMCAV1S",
+                "name": "BÁN TỰ ĐỘNG",
+                "src": "product_bantudong.jpg",
+                "intro": [
+                    "Bàn xoay tự động",
+                    "Trục quét điều chỉnh đơn giản bằng tay",
+                    "Bảo hành 2 năm",
+                    "1 đổi 1 trong vòng 30 ngày đầu tiên."
+                ],
+                "properties": null,
+                "info": null,
+                "price": {
+                    "origin": 9000000,
+                    "final": 8500000
+                }
+            },
+            {
+                "id": 1,
+                "code": null,
+                "name": "MÁY TỰ ĐỘNG",
+                "src": "product_tudong.png",
+                "intro": [
+                    "Bàn xoay tự động",
+                    "Trục quét điều chỉnh tự động bằng động cơ",
+                    "Bảo hành 2 năm",
+                    "1 đổi 1 trong vòng 30 ngày đầu tiên."
+                ],
+                "properties": null,
+                "price": {
+                    "origin": 10000000,
+                    "final": 9500000
+                }
+            },
+            {
+                "id": 2,
+                "code": null,
+                "name": "COMBO ƯU ĐÃI",
+                "src": "product_tudong.png",
+                "intro": [
+                    "Bàn xoay tự động",
+                    "Trục quét điều chỉnh tự động bằng động cơ",
+                    "Bảo hành 2 năm",
+                    "1 đổi 1 trong vòng 30 ngày đầu tiên.",
+                    "2 mâm bàn xoay đá hoa cương lớn nhỏ"
+                ],
+                "price": {
+                    "origin": 12000000,
+                    "final": 10500000
+                }
+            }
+        ],
+        "detail": null,
+        "additional_information": null,
+        "feedback": null
+    }
+]

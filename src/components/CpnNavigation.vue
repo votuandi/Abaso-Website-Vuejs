@@ -2,7 +2,7 @@
   <header :class="{ 'scrolled-nav': scrollNav }">
     <nav>
       <div class="branding">
-        <img src="@/assets/logo.png" alt="" />
+        <img src="@/assets/img/logo.png" alt="" />
       </div>
       <ul v-show="!mobile" class="navigation">
         <li>
@@ -164,6 +164,7 @@ header {
   position: fixed;
   transition: 0.5s ease all;
   color: #26787c;
+  z-index: 999;
 
   nav {
     position: relative;

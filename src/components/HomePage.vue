@@ -64,8 +64,6 @@
         </ul>
       </div>
     </div>
-
-    <CpnFooter />
   </div>
 </template>
 
@@ -75,14 +73,14 @@ import CpnProductCard from "./CpnProductCard.vue";
 import jsonProductData from "@/assets/json/products.json";
 import jsonBlogs from "@/assets/json/blogs.json";
 import CpnCakeSlider from "./CpnCakeSlider.vue";
-import CpnFooter from "./CpnFooter.vue";
+// import CpnFooter from "./CpnFooter.vue";
 export default {
   name: "HomePage",
   components: {
     IntroductionPage,
     CpnProductCard,
     CpnCakeSlider,
-    CpnFooter,
+    // CpnFooter,
   },
   data() {
     return {
@@ -310,6 +308,10 @@ export default {
   width: 10vw;
   border-top: 5px solid rgba(0, 0, 0, 0.8);
   margin: 50px 0;
+
+  @media (max-width: 900px) {
+    margin-bottom: 30px;
+  }
 }
 
 .product-carts-container {
@@ -358,6 +360,16 @@ export default {
         &:hover {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .product-card {
+          margin: 10px 0;
         }
       }
     }
@@ -463,6 +475,23 @@ export default {
             padding-top: 10px;
             margin-bottom: 10px;
           }
+        }
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    .blogs {
+      flex-direction: column;
+      .blogs-logo {
+        padding: 20px 0;
+      }
+      .blogs-cards {
+        // background-color: aquamarine;
+        .blogs-card {
+          width: 360px;
+          height: 420px;
+          flex-direction: column;
+          justify-content: space-between;
         }
       }
     }

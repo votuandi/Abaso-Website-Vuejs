@@ -8,6 +8,8 @@ import ProductsPage from "../components/ProductsPage.vue"
 import ServicesPage from "../components/ServicesPage.vue"
 import BlogsPage from "../components/BlogsPage.vue"
 import ContactUsPage from "../components/ContactUsPage.vue"
+import ProductDetailPage from "@/components/ProductDetailPage.vue"
+import AdminPage from "@/components/AdminPage.vue"
 
 const routes = [{
         path: "/",
@@ -20,12 +22,12 @@ const routes = [{
         component: ProductsPage
     },
     {
-        path: "/",
+        path: "/services",
         name: "Services",
         component: ServicesPage
     },
     {
-        path: "/",
+        path: "/blogs",
         name: "Blogs",
         component: BlogsPage
     },
@@ -33,6 +35,15 @@ const routes = [{
         path: "/",
         name: "ContactUs",
         component: ContactUsPage
+    }, {
+        path: "/products/:productId",
+        name: "ProductDetail",
+        component: ProductDetailPage
+    },
+    {
+        path: "/admin",
+        name: "Admin",
+        component: AdminPage
     },
 ]
 

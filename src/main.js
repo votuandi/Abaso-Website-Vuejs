@@ -9,7 +9,15 @@ import {
 } from "@fortawesome/fontawesome-svg-core";
 
 import {
-    faBars
+    faBars,
+    faSearch,
+    faPlus,
+    faTrash,
+    faFile,
+    faPencil,
+    faBackward,
+    faArrowLeft,
+    faChevronLeft
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -18,7 +26,7 @@ import {
 
 import VueSplide from '@splidejs/vue-splide';
 
-library.add(faBars);
+library.add(faBars, faSearch, faPlus, faTrash, faFile, faPencil, faBackward, faArrowLeft, faChevronLeft);
 
 
 

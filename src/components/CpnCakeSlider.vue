@@ -1,6 +1,6 @@
 <template>
   <div class="cake-silder">
-    <splide :options="options">
+    <splide class="splider" :options="options">
       <splide-slide v-for="(photoPath, ind) in getListPhotoPaths()" :key="ind">
         <img :src="photoPath" alt="" />
       </splide-slide>
@@ -49,10 +49,21 @@ export default {
   methods: {
     getListPhotoPaths() {
       let listPath = [];
-      this.photoNames.forEach((photoName) => {
-        let path = require(`@/assets/img/CakeWeb/${photoName}`);
-        listPath.push(path);
-      });
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth <= 900) {
+        this.photoNames.forEach((photoName) => {
+          let _photoName = photoName.split(".");
+          _photoName[0] += "_16x9";
+          photoName = _photoName.join(".");
+          let path = require(`@/assets/img/CakeWeb/${photoName}`);
+          listPath.push(path);
+        });
+      } else {
+        this.photoNames.forEach((photoName) => {
+          let path = require(`@/assets/img/CakeWeb/${photoName}`);
+          listPath.push(path);
+        });
+      }
       return listPath;
     },
   },
@@ -62,6 +73,10 @@ export default {
 <style lang="scss" scoped>
 .cake-silder {
   position: relative;
+
+  .splider {
+    padding: 0;
+  }
 
   .text-over-silde {
     position: absolute;
@@ -96,6 +111,25 @@ export default {
       p {
         font-family: Garamond, serif;
         text-align: justify;
+      }
+    }
+
+    @media (max-width: 900px) {
+      width: 160px;
+      height: 90px;
+
+      .texts {
+        width: 150px;
+        height: 80px;
+        padding: 5px;
+
+        h3 {
+          font-size: 10px;
+        }
+
+        p {
+          font-size: 6px;
+        }
       }
     }
   }

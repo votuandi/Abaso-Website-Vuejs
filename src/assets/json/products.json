@@ -73,7 +73,11 @@
                 }
             }
         ],
-        "detail": null,
+        "detail": {
+            "videos": ["machine-video.mp4", "machine-video-02.mp4"],
+            "images": null,
+            "text": null
+        },
         "additional_information": {
             "weight": "12kg",
             "size": "35 × 35 × 40 cm",
@@ -119,6 +123,7 @@
                     "1 đổi 1 trong vòng 30 ngày đầu tiên."
                 ],
                 "properties": null,
+                "info": null,
                 "price": {
                     "origin": 10000000,
                     "final": 9500000
@@ -136,14 +141,22 @@
                     "1 đổi 1 trong vòng 30 ngày đầu tiên.",
                     "2 mâm bàn xoay đá hoa cương lớn nhỏ"
                 ],
+                "properties": null,
+                "info": null,
                 "price": {
                     "origin": 12000000,
                     "final": 10500000
                 }
             }
         ],
-        "detail": null,
-        "additional_information": null,
+        "detail": {
+            "videos": null,
+            "images": ["product_bantudong.jpg", "product_tudong.png"],
+            "text": null
+        },
+        "additional_information": {
+            "Bộ điều khiển dao" : "Cơ, Motor"
+        },
         "feedback": null
     }
 ]

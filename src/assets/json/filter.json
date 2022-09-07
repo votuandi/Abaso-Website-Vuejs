@@ -1,0 +1,15 @@
+{
+    "prices": [
+        { "isChecked": false, "text": "Dưới 10 Triệu", "value": [0, 10000000] },
+        {
+          "isChecked": false,
+          "text": "Từ 10 - 15 Triệu",
+          "value": [10000000, 15000000]
+        },
+        {
+          "isChecked": false,
+          "text": "Trên 15 Triệu",
+          "value": [15000000, 100000000]
+        }
+      ]
+}

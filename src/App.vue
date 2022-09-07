@@ -2,15 +2,18 @@
   <div class="app">
     <CpnNavigation />
     <router-view />
+    <CpnFooter />
   </div>
 </template>
 
 <script>
 import CpnNavigation from "./components/CpnNavigation.vue";
+import CpnFooter from "./components/CpnFooter.vue";
 export default {
   name: "App",
   components: {
     CpnNavigation,
+    CpnFooter,
   },
 };
 </script>
@@ -30,10 +33,9 @@ export default {
   min-height: 100vh;
   position: relative;
   background-color: #f1f1f1;
-}
-.container {
-  // padding: 0 20px;
-  max-width: 1140px;
-  margin: 0 auto;
+
+  CpnFooter {
+    z-index: 100;
+  }
 }
 </style>

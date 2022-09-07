@@ -234,6 +234,161 @@ export default {
       }
     }
   }
+
+  @media (max-width: 700px) {
+    background-color: #d5685e;
+    width: 200px;
+    height: 100%;
+    max-width: 350px;
+    min-height: 350px;
+    background: white;
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    box-shadow: 3px 5px 6px -3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // margin: 15px 0;
+    transition: all 0.4s ease-in 0.2s;
+    z-index: 100;
+    &:hover {
+      width: 350px;
+      .card-description {
+        opacity: 1;
+        right: -3%;
+      }
+    }
+
+    .card-info {
+      // background: red;
+      transition: all 0.6s ease-in 0.2s;
+      position: absolute;
+      left: 0%;
+      top: 0;
+      bottom: 0;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .card-img {
+        //   background-color: #d5685e;
+        width: 200px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease-in 0.2s;
+        img {
+          width: 200px;
+          height: auto;
+        }
+      }
+      .info {
+        //   background-color: #65bcb6;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        .name {
+          font-family: Verdana, sans-serif;
+          font-size: 20px;
+          font-weight: 900;
+          line-height: 1;
+          color: darkolivegreen;
+          margin: 0;
+        }
+
+        ul {
+          list-style: none;
+
+          .prices {
+            // background-color: #d5685e;
+
+            .origin-price {
+              font-family: "Roboto", sans-serif;
+              color: #666;
+              font-weight: 400;
+              font-size: 10px;
+              margin-top: 5px;
+              text-decoration-line: line-through;
+            }
+            .final-price {
+              font-family: "Roboto", sans-serif;
+              color: red;
+              font-weight: 600;
+              font-size: 14px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+
+        .rating i {
+          color: #d5685e;
+          font-size: 8px;
+        }
+      }
+    }
+
+    .card-description {
+      transition: all 0.5s ease-in 0.1s;
+      position: absolute;
+      right: -100%;
+      opacity: 0;
+      top: 0;
+      bottom: 0;
+      width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 15px 10% 0;
+
+      .list-card-detail {
+        width: 120px;
+        li {
+          font-family: Verdana, sans-serif;
+          font-size: 15px;
+          font-weight: 300;
+          margin-bottom: 10px;
+          line-height: 1.2;
+          word-spacing: 1px;
+        }
+      }
+
+      p {
+        text-align: center;
+        padding: 0 5px;
+        color: #666;
+        font-weight: 300;
+        font-size: 5px;
+      }
+
+      .view-detail {
+        background: #65bcb6;
+        padding: 5px 10px;
+        margin: 5px 0 0 0;
+        border-radius: 0px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        vertical-align: middle;
+        &:hover {
+          background: darken(#65bcb6, 10%);
+        }
+        h4 {
+          margin: 0;
+          color: white;
+          pading: 5px;
+          i {
+            margin-right: 2px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes slide-in {

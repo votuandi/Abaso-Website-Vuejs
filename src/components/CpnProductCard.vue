@@ -2,7 +2,7 @@
   <div class="product-card">
     <div class="card-info">
       <div class="card-img">
-        <img :src="getSrc" />
+        <img :src="src" />
       </div>
       <div class="info">
         <h2 class="name">{{ cardData.name }}</h2>
@@ -46,10 +46,11 @@
 </template>
 
 <script>
+import firebaseUtils from "@/utilities/firebase";
 export default {
-  //   beforeMount() {
-  //     console.log(this.cardData);
-  //   },
+  async beforeMount() {
+    this.src = await firebaseUtils.getFriebaseFileUrl(this.cardData.src);
+  },
   name: "CpnCard",
   props: {
     cardData: {
@@ -57,20 +58,22 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      src: null,
+    };
+  },
   computed: {
-    getSrc() {
-      return require(`@/assets/img/${this.cardData.src}`);
-    },
     formatPrice() {
       let op = new Intl.NumberFormat("de-DE", {
         style: "currency",
         currency: "VND",
-      }).format(this.cardData.price.origin);
+      }).format(this.cardData.origin_price);
 
       let fp = new Intl.NumberFormat("de-DE", {
         style: "currency",
         currency: "VND",
-      }).format(this.cardData.price.final);
+      }).format(this.cardData.final_price);
 
       return [op, fp];
     },

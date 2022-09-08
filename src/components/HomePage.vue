@@ -22,7 +22,7 @@
 
     <ul class="product-carts-container">
       <div class="break"></div>
-      <li v-for="products in listProducts" :key="products.id">
+      <li v-for="products in listProducts.splice(0, 2)" :key="products.id">
         <div class="cards-info">
           <h1>Các phiên bản {{ products.name }}</h1>
           <p>{{ products.intro }}</p>
@@ -70,21 +70,26 @@
 <script>
 import IntroductionPage from "./IntroductionPage.vue";
 import CpnProductCard from "./CpnProductCard.vue";
-import jsonProductData from "@/assets/json/products.json";
+// import jsonProductData from "@/assets/json/products.json";
 import jsonBlogs from "@/assets/json/blogs.json";
 import CpnCakeSlider from "./CpnCakeSlider.vue";
-// import CpnFooter from "./CpnFooter.vue";
+import axios from "axios";
+import backendUrl from "@/configs/backendUrl";
 export default {
   name: "HomePage",
   components: {
     IntroductionPage,
     CpnProductCard,
     CpnCakeSlider,
-    // CpnFooter,
+  },
+  async beforeMount() {
+    await axios.get(backendUrl.urls.GET_ALL_PRODUCTS_PATH_FULL).then((res) => {
+      this.listProducts = res.data;
+    });
   },
   data() {
     return {
-      listProducts: jsonProductData,
+      listProducts: [],
       listBlogs: jsonBlogs,
       listCakePaths: [
         "WebCake01.png",
@@ -305,7 +310,7 @@ export default {
 }
 
 .break {
-  width: 10vw;
+  height: 10vh;
   border-top: 5px solid rgba(0, 0, 0, 0.8);
   margin: 50px 0;
 

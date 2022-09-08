@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import firebaseUtils from "@/utilities/firebase";
 export default {
   name: "SmallProductCard",
   props: {
@@ -29,6 +30,15 @@ export default {
       type: Object,
       default: null,
     },
+  },
+  data() {
+    return {
+      avt: null,
+    };
+  },
+  async beforeMount() {
+    this.avt = await firebaseUtils.getFriebaseFileUrl(this.pdData.sub[0].src);
+    console.log(this.pdData);
   },
   methods: {
     formatPrice(price) {
@@ -40,11 +50,11 @@ export default {
   },
   computed: {
     getSrc() {
-      return require(`@/assets/img/${this.pdData.sub[0].src}`);
+      return this.avt;
     },
     getPrices() {
-      let originPrices = this.pdData.sub.map((s) => s.price.origin);
-      let finalPrices = this.pdData.sub.map((s) => s.price.final);
+      let originPrices = this.pdData.sub.map((s) => s.origin_price);
+      let finalPrices = this.pdData.sub.map((s) => s.final_price);
       let op = `${this.formatPrice(
         Math.min(...originPrices)
       )} ~ ${this.formatPrice(Math.max(...originPrices))}`;

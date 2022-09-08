@@ -31,8 +31,14 @@ export default {
 
 .app {
   min-height: 100vh;
+  width: 100vw;
   position: relative;
-  background-color: #f1f1f1;
+  // background-color: red;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 
   CpnFooter {
     z-index: 100;

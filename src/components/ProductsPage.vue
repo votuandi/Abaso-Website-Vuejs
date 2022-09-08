@@ -44,9 +44,16 @@ import jsonProducts from "@/assets/json/products.json";
 import CpnSmallProductCard from "./CpnSmallProductCard.vue";
 import jsonFilters from "@/assets/json/filter.json";
 import { toRaw } from "@vue/reactivity";
+import backendUrl from "@/configs/backendUrl";
+import axios from "axios";
 export default {
   name: "ProductsPage",
   components: { CpnSmallProductCard },
+  async beforeMount() {
+    await axios.get(backendUrl.urls.GET_ALL_PRODUCTS_PATH_FULL).then((res) => {
+      this.getListProduct(res.data);
+    });
+  },
   data() {
     return {
       priceChecklist: jsonFilters.prices,
@@ -55,6 +62,9 @@ export default {
     };
   },
   methods: {
+    getListProduct(_products) {
+      this.listProduct = _products;
+    },
     onCheckPrice(ind) {
       this.priceChecklist[ind].isChecked = !this.priceChecklist[ind].isChecked;
       this.setFilteredProducts();
@@ -69,7 +79,6 @@ export default {
         this.filteredProducts = this.listProduct;
         return;
       }
-
       this.filteredProducts = this.listProduct
         .filter((p) => this.filterByPrice(selectedPrices, p))
         .map((p) => JSON.parse(JSON.stringify(p)));
@@ -89,7 +98,8 @@ export default {
       return isTrue;
     },
     getFinalPrice(subs) {
-      let finalPrices = subs.map((s) => s.price.final);
+      console.log(subs);
+      let finalPrices = subs.map((s) => s.final_price);
       return [Math.min(...finalPrices), Math.max(...finalPrices)];
     },
     gotoDetail() {

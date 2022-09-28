@@ -1,18 +1,21 @@
 <template>
   <div class="admin-page">
     <div class="admin-menu">
-      <div class="memu-title">
-        <h1>ADMIN</h1>
-        <button
-          class="show-more"
-          @click="
-            {
-              this.showMoreMenu = !this.showMoreMenu;
-            }
-          "
-        >
-          <font-awesome-icon class="icon-more" icon="bars" />
-        </button>
+      <div class="menu-nav">
+        <div class="memu-title">
+          <h1>ADMIN</h1>
+          <button
+            class="show-more"
+            @click="
+              {
+                this.showMoreMenu = !this.showMoreMenu;
+              }
+            "
+          >
+            <font-awesome-icon class="icon-more" icon="bars" />
+          </button>
+        </div>
+        <button class="btn-login btn-color" @click="logout()">Log Out</button>
       </div>
       <div class="menu-items" v-show="showMoreMenu">
         <button
@@ -46,6 +49,8 @@
 import AdminProductManager from "./AdminProductManager.vue";
 import AdminBlogManager from "./AdminBlogManager.vue";
 import AdminQAManager from "./AdminQAManager.vue";
+import axios from "axios";
+import backendUrl from "@/configs/backendUrl";
 export default {
   name: "AdminPage",
   data() {
@@ -54,9 +59,41 @@ export default {
       selectedItem: 0,
     };
   },
+  async beforeCreate() {
+    let jwt = localStorage.getItem("jwt");
+    if (jwt.length == 0) {
+      alert("Bạn chưa đăng nhập!");
+      this.$router.push({ name: "LogIn" });
+    } else {
+      await axios
+        .post(backendUrl.urls.VERITY_TOKEN_FULL_PATH, {
+          token: jwt,
+        })
+        .then((res) => {
+          console.log(res);
+          if (res.data.isTrueToken) {
+            console.log(`Hello Admin ${localStorage.getItem("user").username}`);
+          } else {
+            alert("Bạn chưa đăng nhập!");
+            this.$router.push({ name: "LogIn" });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  },
   methods: {
     onSelectItem(_value) {
       this.selectedItem = _value;
+    },
+    logout() {
+      if (confirm("Bạn muốn đăng xuất?")) {
+        localStorage.setItem("user", null);
+        localStorage.setItem("jwt", "");
+
+        this.$router.push({ name: "LogIn" });
+      }
     },
   },
   components: { AdminProductManager, AdminBlogManager, AdminQAManager },
@@ -81,29 +118,77 @@ export default {
     align-items: center;
     justify-content: center;
 
-    .memu-title {
-      position: relative;
+    .menu-nav {
+      width: 100vw;
       display: flex;
       flex-direction: row;
-      align-items: center;
-      justify-content: center;
+      .memu-title {
+        flex: 1 0 auto;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
 
-      .show-more {
-        background-color: #fff;
-        margin-left: 10px;
-        font-size: 20px;
-        height: 30px;
-        width: 30px;
-        border: 0px;
+        .show-more {
+          background-color: #fff;
+          margin-left: 10px;
+          font-size: 20px;
+          height: 30px;
+          width: 30px;
+          border: 0px;
 
-        .icon-more {
-          color: #666;
+          .icon-more {
+            color: #666;
 
-          &:hover {
-            color: rgb(218, 218, 218);
-            cursor: pointer;
+            &:hover {
+              color: rgb(218, 218, 218);
+              cursor: pointer;
+            }
           }
         }
+      }
+      .btn-login {
+        width: fit-content;
+        padding: 0.7rem 1rem;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0.5rem 0;
+        color: #fff;
+        cursor: pointer;
+        text-align: center;
+        border: none;
+        background-size: 300% 100%;
+        border-radius: 50px;
+        moz-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+        margin-right: 2rem;
+
+        &:hover {
+          background-position: 100% 0;
+          moz-transition: all 0.4s ease-in-out;
+          -o-transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+          transition: all 0.4s ease-in-out;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .btn-color {
+        background-image: linear-gradient(
+          to right,
+          #fc6076,
+          #ff9a44,
+          #ef9d43,
+          #e75516
+        );
+        box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
       }
     }
 

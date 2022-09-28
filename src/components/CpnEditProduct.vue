@@ -467,8 +467,7 @@ export default {
     async putEditProduct() {
       await axios
         .put(backendUrl.urls.EDIT_PRODUCT_FULL_PATH, {
-          body: this.newData,
-          headers: backendUrl.headers,
+          newData: this.newData,
         })
         .then((res) => {
           console.log(res);
@@ -507,8 +506,7 @@ export default {
             this.currentProduct.id
           ),
           {
-            body: this.newData,
-            headers: backendUrl.headers,
+            newData: this.newData,
           }
         )
         .then((res) => {

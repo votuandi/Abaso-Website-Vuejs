@@ -124,6 +124,7 @@ export default {
     }
 
     this.product = _product;
+    document.title = this.product.name;
     await this.loadMedia();
 
     // console.log(this.product);

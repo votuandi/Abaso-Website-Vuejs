@@ -1,7 +1,6 @@
 <template>
   <div class="s-product-card">
     <router-link
-      ref="goToDetail"
       class="nav-link"
       :to="{
         name: 'ProductDetail',

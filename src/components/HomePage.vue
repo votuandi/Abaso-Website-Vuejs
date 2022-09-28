@@ -22,7 +22,7 @@
 
     <ul class="product-carts-container">
       <div class="break"></div>
-      <li v-for="products in listProducts.splice(0, 2)" :key="products.id">
+      <li v-for="products in listProducts" :key="products.id">
         <div class="cards-info">
           <h1>Các phiên bản {{ products.name }}</h1>
           <p>{{ products.intro }}</p>
@@ -52,14 +52,30 @@
         </div>
         <ul class="blogs-cards">
           <li class="blogs-card" v-for="blog in listBlogs" :key="blog.id">
-            <div class="blog-img">
-              <img :src="getBlogScr(blog.src)" alt="" />
+            <router-link
+              class="nav-link"
+              :to="{
+                name: 'BlogDetailPage',
+                params: { blogId: blog.id },
+              }"
+            >
+              <div class="blog-img">
+                <img :src="getBlogImgUrl(blog.id)" alt="" />
+              </div>
+              <div class="blog-texts">
+                <h3 class="title">{{ blog.title }}</h3>
+                <p class="time">{{ blog.createDate }}</p>
+                <p class="cut-content">{{ blog.sapo }}</p>
+              </div>
+            </router-link>
+            <!-- <div class="blog-img">
+              <img :src="getBlogImgUrl(blog.id)" alt="" />
             </div>
             <div class="blog-texts">
               <h3 class="title">{{ blog.title }}</h3>
-              <p class="time">{{ blog.date }}</p>
-              <p class="cut-content">{{ blog.content }}</p>
-            </div>
+              <p class="time">{{ blog.createDate }}</p>
+              <p class="cut-content">{{ blog.sapo }}</p>
+            </div> -->
           </li>
         </ul>
       </div>
@@ -70,11 +86,10 @@
 <script>
 import IntroductionPage from "./IntroductionPage.vue";
 import CpnProductCard from "./CpnProductCard.vue";
-// import jsonProductData from "@/assets/json/products.json";
-import jsonBlogs from "@/assets/json/blogs.json";
 import CpnCakeSlider from "./CpnCakeSlider.vue";
 import axios from "axios";
 import backendUrl from "@/configs/backendUrl";
+import firebase from "@/utilities/firebase";
 export default {
   name: "HomePage",
   components: {
@@ -83,14 +98,21 @@ export default {
     CpnCakeSlider,
   },
   async beforeMount() {
-    await axios.get(backendUrl.urls.GET_ALL_PRODUCTS_PATH_FULL).then((res) => {
+    await axios.get(backendUrl.urls.GET_HOME_PRODUCTS_PATH_FULL).then((res) => {
+      console.log(res.data);
       this.listProducts = res.data;
     });
+    await axios.get(backendUrl.urls.GET_HOME_BLOGS_PATH_FULL).then((res) => {
+      this.listBlogs = res.data;
+    });
+    for (let blog of this.listBlogs) {
+      blog.imgUrl = await firebase.getFriebaseFileUrl(blog.img);
+    }
   },
   data() {
     return {
       listProducts: [],
-      listBlogs: jsonBlogs,
+      listBlogs: [],
       listCakePaths: [
         "WebCake01.png",
         "WebCake02.png",
@@ -101,8 +123,8 @@ export default {
     };
   },
   methods: {
-    getBlogScr(imgName) {
-      return require(`@/assets/img/${imgName}`);
+    getBlogImgUrl(id) {
+      return this.listBlogs.filter((b) => b.id == id)[0].imgUrl;
     },
   },
 };
@@ -443,42 +465,52 @@ export default {
             0 6px 20px 0 rgba(0, 0, 0, 0.05);
         }
 
-        .blog-img {
-          height: 200px;
+        .nav-link {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          flex-direction: row;
+          list-style: none;
+          text-decoration: none;
+          color: #000;
 
-          img {
+          .blog-img {
             height: 200px;
-            width: 200px;
-          }
-        }
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-        .blog-texts {
-          // background-color: blueviolet;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: flex-end;
-          padding: 5px 10px;
-
-          h3 {
-            font-size: 24px;
-            font-weight: 900;
+            img {
+              height: 200px;
+              width: 200px;
+              border-bottom: 0px;
+              border-radius: 10px;
+            }
           }
 
-          p.time {
-            color: #666;
-            font-size: 10;
-            font-weight: 500;
-          }
+          .blog-texts {
+            // background-color: blueviolet;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 5px 10px;
 
-          p.cut-content {
-            font-size: 14px;
-            text-align: justify;
-            padding-top: 10px;
-            margin-bottom: 10px;
+            h3 {
+              font-size: 24px;
+              font-weight: 900;
+            }
+
+            p.time {
+              color: #666;
+              font-size: 10;
+              font-weight: 500;
+            }
+
+            p.cut-content {
+              font-size: 14px;
+              text-align: justify;
+              padding-top: 10px;
+              margin-bottom: 10px;
+            }
           }
         }
       }

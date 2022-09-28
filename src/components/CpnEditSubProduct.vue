@@ -242,8 +242,7 @@ export default {
     async putEditSub() {
       await axios
         .put(backendUrl.urls.EDIT_SUBPRODUCT_FULL_PATH, {
-          body: this.newData,
-          headers: backendUrl.headers,
+          newData: this.newData,
         })
         .then((res) => {
           console.log(res);

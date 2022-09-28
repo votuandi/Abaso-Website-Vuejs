@@ -35,6 +35,8 @@
       :currentProduct="listProduct[currentProductId]"
       v-on:onCancelEdit="onBackEdit"
     />
+
+    <CpnLoader v-if="isLoading" />
     <div
       class="list-product"
       v-if="nav == 0"
@@ -94,15 +96,14 @@ import backendUrl from "@/configs/backendUrl";
 import axios from "axios";
 import firebaseUtils from "@/utilities/firebase";
 import EditProduct from "./CpnEditProduct.vue";
+import CpnLoader from "./CpnLoader.vue";
 
 export default {
-  beforeMount() {
-    axios.get(backendUrl.urls.GET_ALL_PRODUCTS_PATH_FULL).then((res) => {
-      this.getListProduct(res.data);
-    });
+  async beforeMount() {
+    await this.getListProduct();
   },
   name: "ProductManager",
-  components: { AddProduct, AddSubProduct, EditProduct },
+  components: { AddProduct, AddSubProduct, EditProduct, CpnLoader },
   data() {
     return {
       showAddProductView: [false, false],
@@ -114,9 +115,17 @@ export default {
       listProduct: [],
       currentProductId: 0,
       nav: 0,
+      isLoading: false,
     };
   },
   methods: {
+    async getListProduct() {
+      await axios
+        .get(backendUrl.urls.GET_ALL_PRODUCTS_PATH_FULL)
+        .then((res) => {
+          this.listProduct = res.data;
+        });
+    },
     onShowAddView() {
       if (this.haveAddProductView[0] | (this.haveAddProductView[1] == 0)) {
         this.haveAddProductView = [true, false];
@@ -153,6 +162,7 @@ export default {
     },
 
     async fisishAddProduct(_newSubProduct) {
+      this.isLoading = true;
       //PREPARING
       this.newProduct["sub"] = _newSubProduct;
       console.log(this.newProduct);
@@ -165,7 +175,8 @@ export default {
 
       //INSERT NEW PRODUCT INRO DATABASE
       await this.postCreateProduct();
-      console.log("finish");
+      this.getListProduct();
+      this.isLoading = false;
     },
 
     async uploadFiles() {
@@ -189,8 +200,7 @@ export default {
       // console.log(this.newProduct);
       await axios
         .post(backendUrl.urls.CREATE_PRODUCT_FULL_PATH, {
-          body: this.newProduct,
-          headers: backendUrl.headers,
+          newProduct: this.newProduct,
         })
         .then((res) => {
           console.log(res);
@@ -200,9 +210,9 @@ export default {
         });
     },
 
-    getListProduct(_products) {
-      this.listProduct = _products;
-    },
+    // getListProduct(_products) {
+    //   this.listProduct = _products;
+    // },
 
     onShowEditProductView(ind) {
       // console.log(ind);

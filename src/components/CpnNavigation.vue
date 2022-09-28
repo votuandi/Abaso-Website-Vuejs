@@ -10,7 +10,8 @@
             >Home</router-link
           >
         </li>
-        <li @mouseover="showProductsMenu" @mouseleave="hideProductsMenu">
+        <!-- <li @mouseover="showProductsMenu" @mouseleave="hideProductsMenu"> -->
+        <li>
           <router-link class="nav-link" :to="{ name: 'Products' }"
             >Products</router-link
           >

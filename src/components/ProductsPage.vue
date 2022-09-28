@@ -33,7 +33,6 @@
         :key="product.id"
         class="product-card"
         :pdData="product"
-        @click="gotoDetail()"
       />
     </div>
   </div>
@@ -43,7 +42,6 @@
 import jsonProducts from "@/assets/json/products.json";
 import CpnSmallProductCard from "./CpnSmallProductCard.vue";
 import jsonFilters from "@/assets/json/filter.json";
-import { toRaw } from "@vue/reactivity";
 import backendUrl from "@/configs/backendUrl";
 import axios from "axios";
 export default {
@@ -103,7 +101,7 @@ export default {
       return [Math.min(...finalPrices), Math.max(...finalPrices)];
     },
     gotoDetail() {
-      console.log(toRaw(this.$refs.goToDetail));
+      console.log(this.$refs.goToDetail);
     },
   },
 };

@@ -1,5 +1,5 @@
 {
-  "name": "demo-abaso",
+  "name": "Abaso",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,8 +16,11 @@
     "@splidejs/vue-splide": "^0.6.7",
     "axios": "^0.27.2",
     "babel-eslint": "^10.1.0",
+    "bcryptjs": "^2.4.3",
     "core-js": "^3.8.3",
+    "dotenv-webpack": "^8.0.1",
     "firebase": "^9.9.3",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "uuid": "^8.3.2",
     "vue": "^3.2.13",
     "vue-responsive-video-background-player": "^2.2.3",

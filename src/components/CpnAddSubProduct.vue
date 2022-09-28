@@ -235,8 +235,7 @@ export default {
       console.log(this.newData);
       await axios
         .post(backendUrl.urls.CREATE_SUBPRODUCT_FULL_PATH, {
-          body: this.newData,
-          headers: backendUrl.headers,
+          newData: this.newData,
         })
         .then((res) => {
           console.log(res);
